@@ -1,11 +1,12 @@
+package Basic;
+
+import Basic.base;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.touch.LongPressOptions;
 import org.openqa.selenium.WebElement;
 
 import static io.appium.java_client.touch.TapOptions.tapOptions;
 import java.net.MalformedURLException;
-import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 import static io.appium.java_client.touch.offset.ElementOption.element;
 import static io.appium.java_client.touch.LongPressOptions.longPressOptions;

@@ -1,3 +1,6 @@
+package Basic;
+
+import Basic.base;
 import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.By;
 
