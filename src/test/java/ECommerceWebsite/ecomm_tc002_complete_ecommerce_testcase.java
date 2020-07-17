@@ -1,20 +1,30 @@
 package ECommerceWebsite;
 
 import io.appium.java_client.MobileElement;
+import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.nativekey.AndroidKey;
+import io.appium.java_client.android.nativekey.KeyEvent;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
 import java.net.MalformedURLException;
 import java.util.List;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
+import static io.appium.java_client.touch.offset.ElementOption.element;
+import static io.appium.java_client.touch.TapOptions.tapOptions;
+import static java.time.Duration.ofSeconds;
+import static io.appium.java_client.touch.LongPressOptions.longPressOptions;
 
-public class ecomm_tc003_check_price extends base {
+public class ecomm_tc002_complete_ecommerce_testcase extends base {
     public static void main(String[] args) throws MalformedURLException, InterruptedException {
 
 
         AndroidDriver driver = Capabilities();
-        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
         driver.findElementById("com.androidsample.generalstore:id/nameField").sendKeys("Rahul");
         driver.hideKeyboard();
         driver.findElementById("com.androidsample.generalstore:id/radioFemale").click();
@@ -40,5 +50,27 @@ public class ecomm_tc003_check_price extends base {
         }
         System.out.println(sum);
         Assert.assertEquals(sum,280.97);
+        WebElement checkbox=driver.findElement(By.className("android.widget.CheckBox"));
+        WebElement read_text=driver.findElement(By.xpath("//*[@text='Please read our terms of conditions']"));
+        TouchAction t=new TouchAction(driver);
+        t.tap(tapOptions().withElement(element(checkbox))).perform();
+        t.longPress(longPressOptions().withElement(element(read_text)).withDuration(ofSeconds(5))).release().perform();
+        driver.findElement(By.id("android:id/button1")).click();
+        driver.findElement(By.className("android.widget.Button")).click();
+        Thread.sleep(3000);
+        Set<String> contextNames=driver.getContextHandles();
+
+        for (String contextName : contextNames) {
+            System.out.println(contextName); //prints out something like NATIVE_APP \n WEBVIEW_1
+        }
+        driver.context("WEBVIEW_com.androidsample.generalstore");
+        driver.findElement(By.name("q")).sendKeys("Hello");
+        driver.findElement(By.name("q")).sendKeys(Keys.ENTER);
+        driver.pressKey(new KeyEvent(AndroidKey.BACK));
+
+
+
     }
+
 }
+

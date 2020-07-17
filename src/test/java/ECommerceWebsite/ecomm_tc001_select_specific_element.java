@@ -9,7 +9,7 @@ import java.net.MalformedURLException;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-public class ecomm_tc002_select_specific_element extends base {
+public class ecomm_tc001_select_specific_element extends base {
     public static void main(String[] args) throws MalformedURLException {
         AndroidDriver driver=Capabilities();
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
