@@ -3,12 +3,13 @@ package ECommerceWebsite;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.By;
+import org.testng.Assert;
 
 import java.net.MalformedURLException;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-public class ecomm_tc002 extends base {
+public class ecomm_tc002_select_specific_element extends base {
     public static void main(String[] args) throws MalformedURLException {
         AndroidDriver driver=Capabilities();
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
@@ -37,6 +38,11 @@ public class ecomm_tc002 extends base {
 
         }
         driver.findElement(By.id("com.androidsample.generalstore:id/appbar_btn_cart")).click();
+        //String text_add_to_cart=driver.findElement(By.id("com.androidsample.generalstore:id/productName")).getText();
+        //Assert.assertEquals("Jordan 6 Rings",text_add_to_cart);
+        //String lastpageText=driver.findElement(By.id("com.androidsample.generalstore:id/productName")).getText();
+
+        //Assert.assertEquals("Jordan 6 Rings", lastpageText);
 
 
     }
